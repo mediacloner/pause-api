@@ -1,13 +1,13 @@
 # pause-api
 
 
-## Definition in two lines:
+## Definition:
 
 
     API that connect data service with fron-end of 'Pause' 
 
 
-## What is 'Pause':
+## What is 'Pause'?:
 
     Pause is a social media.
 
