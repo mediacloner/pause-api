@@ -21,10 +21,10 @@ More info on ![Pause](https://github.com/mediacloner/pause)
 ## Data Model
 
 
-![Data Model](https://github.com/mediacloner/pause/blob/develop/DocSrc/dataModel.png)
+![Data Model](https://github.com/mediacloner/pause/blob/develop/DocSrc/dataModelv2.png)
 
 
-# Kaban
+# Kanban
 
 [Trello / Gantt ](https://trello.com/b/sQLDfwlX)
 
