@@ -1,11 +1,9 @@
 require('dotenv').config()
 
 const express = require('express')
-const bodyParser = require('body-parser')
+const routes = require('./routes')
 const mongoose = require('mongoose')
-const uuid = require('uuid/v4')
-const { success, fail } = require('./api-utils')
-
+const cors = require('cors')
 
 const mongo = {
     host: process.env.MONGO_HOST,
@@ -17,88 +15,11 @@ with(mongo) {
     mongoose.connect(`mongodb://${host}:${port}/${database}`)
 }
 
-
-const router = express.Router()
-
-
-const Post = mongoose.model('posts', {
-
-    title: String,
-    mainDescription: String,    
-    secDescription: String,
-    idUser:String,    
-    kudos:String,
-    counterVisits:Number,
-    idPostTemplate:String,    
-    namePostTemplate:String,
-    tag:String,
-    createAt:Date,
-    comments: [{
-        idUser:String,    
-        comment:String,
-        deleteUserId: Number    
-    }]
-    
-})
-
-
-const User = mongoose.model('users', {
-    user:String,
-    name:String,
-    lastName:String,
-    email:String,
-    password:String,
-    city:String,
-    country:String,
-    kudos:Number,
-    createdAt:Date,
-    updatedAt:Date,
-    about: String,
-    followers:Array,
-    following:Array,
-    titleTimeline:String
-    
-})
-
-router.get('/list', (req, res) => {
-    Post.find({})
-        .then(list => res.json(success(list)))
-        .catch(err => res.json(fail(err.message)))
-})
-
-
-router.get('/list/:id', (req, res) => {
-    const { params: { id } } = req
-
-    Promise.resolve()
-        .then(() => {
-            validate({ id })
-
-
-            return Post.findOne({ id }, {   title: 1,
-                                            mainDescription: 1,    
-                                            secDescription: 1,
-                                            idUser:0,    
-                                            kudos:0,
-                                            counterVisits:0,
-                                            idPostTemplate:0,    
-                                            namePostTemplate:0,
-                                            tag:0,
-                                            createAt:0})
-                                            })
-        .then(list => {
-            if (!list) throw Error('list does not exist')
-
-            res.json(success(list))
-        })
-        .catch(err => {
-            res.json(fail(err.message))
-        })
-})
-
 const app = express()
 
-app.use('/api', router)
+app.use(cors())
+
+app.use('/api', routes)
 
 const port = process.env.PORT
 
