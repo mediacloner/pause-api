@@ -1,14 +1,27 @@
-const list = require('./list')
-const create = require('./create')
-const update = require('./update')
-const _delete = require('./delete')
-const retrieve = require('./retrieve')
-//...
+const listPosts = require('./listPosts')
+const listPostsByUser = require ('./listPostsByUser.js')
+const listPostsByGroup = require ('./listPostsByGroup.js')
+const listPostsBySearch = require ('./listPostsBySearch.js')
+const createComment = require ('./createComment.js')
+const createPost = require ('./createPost.js')
+const createUser = require ('./createUser.js')
+const deleteComment = require ('./deleteComment.js')
+const retrievePost = require ('./retrievePost.js')
+
 
 module.exports = {
-    list,
-    create,
+    listPosts,
+    listPostsByUser,
+    listPostsByGroup,
+    listPostsBySearch,
+    createComment,
+    createPost,
+    createUser,
+    deleteComment,
+    retrievePost
+
+/*     create,
     update,
     delete: _delete,
-    retrieve
+    retrieve */
 }

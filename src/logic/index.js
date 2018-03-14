@@ -1,7 +1,8 @@
-const User = require('../models/User')
-const Post = require('../models/Posts')
+const {User, Post} = require('../models/index')
 const validate = require('./validate')
 const uuid = require('uuid/v4')
+const ObjectId = require('mongoose').Types.ObjectId
+
 
 module.exports = {
     register(name, surname, email, username, password) {
@@ -22,9 +23,31 @@ module.exports = {
     },
 
     list() {
-        return Post.find({})  //, { _id: 0, id: 1, title: 1, mainDescription: 1, email: 1, username: 1 }
+        return Post.find({}).then(posts=>{
+            return User.populate(posts, {path:'idUser' , select: 'user' })
+        }) 
+    },
+    listById(owner) {
+        return Post.find({owner}).populate({ path: 'owner', select: 'username' })
+       // .then(posts=>{
+       //     return Post.find({ owner }).populate({ path: 'owner', select: 'username' })
+       // })  
+        .then(post => {
+           if (!post) throw Error('posts does not exist')
+           return post
+            })
     },
 
+    listByGroup(arrayOfIds) {
+        return Post.find( { "posts" : { owner: { $in : arrayOfIds } } } )
+ 
+        .then(post => {
+                if (!post) throw Error('posts does not exist')
+                return post
+        })
+    },
+
+ 
 
 
     
