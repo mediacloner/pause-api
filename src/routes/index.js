@@ -4,7 +4,7 @@ const { list, create, update, delete: _delete, retrieve } = require('./handlers'
 
 const router = Router()
 
-router.get('/users', list)
+router.get('/list', list)
 
 const jsonBodyParser = bodyParser.json()
 
