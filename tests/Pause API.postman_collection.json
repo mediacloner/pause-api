@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Pause API",
-		"_postman_id": "959be3cb-d149-4e20-aa22-4560967ef004",
+		"_postman_id": "cc56da56-c9f7-407e-8517-d3e39f2ff956",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -177,7 +177,7 @@
 						"111"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}

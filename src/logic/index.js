@@ -22,8 +22,12 @@ module.exports = {
     },
 
     list() {
-        return Post.find({})  //, { _id: 0, id: 1, name: 1, surname: 1, email: 1, username: 1 }
+        return Post.find({})  //, { _id: 0, id: 1, title: 1, mainDescription: 1, email: 1, username: 1 }
     },
+
+
+
+    
 
     update(id, name, surname, email, username, password, newUsername, newPassword) {
         return Promise.resolve()
