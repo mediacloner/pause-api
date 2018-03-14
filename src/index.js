@@ -21,7 +21,7 @@ with(mongo) {
 const router = express.Router()
 
 
-const Post = mongoose.model('Post', {
+const Post = mongoose.model('posts', {
 
     title: String,
     mainDescription: String,    
@@ -42,7 +42,7 @@ const Post = mongoose.model('Post', {
 })
 
 
-const User = mongoose.model('User', {
+const User = mongoose.model('users', {
     user:String,
     name:String,
     lastName:String,
@@ -61,16 +61,7 @@ const User = mongoose.model('User', {
 })
 
 router.get('/list', (req, res) => {
-    User.find({}, {   title: 1,
-    mainDescription: 1,    
-    secDescription: 1,
-    idUser:0,    
-    kudos:0,
-    counterVisits:0,
-    idPostTemplate:0,    
-    namePostTemplate:0,
-    tag:0,
-    createAt:0})
+    Post.find({})
         .then(list => res.json(success(list)))
         .catch(err => res.json(fail(err.message)))
 })
@@ -84,7 +75,7 @@ router.get('/list/:id', (req, res) => {
             validate({ id })
 
 
-            return list.findOne({ id }, {   title: 1,
+            return Post.findOne({ id }, {   title: 1,
                                             mainDescription: 1,    
                                             secDescription: 1,
                                             idUser:0,    
