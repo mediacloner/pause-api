@@ -24,8 +24,8 @@ module.exports = (req, res) => {
         namePostTemplate,
         tag
     )
-    .then(id => {
-      res.json(success({ id }));
+    .then(objResult => {
+      res.json(success({ objResult }));
     })
     .catch(err => {
       res.json(fail(err.message));
