@@ -1,14 +1,33 @@
-const { success, fail } = require('./api-utils')
-const logic = require('../../logic')
+const { success, fail } = require("./api-utils");
+const logic = require("../../logic");
 
 module.exports = (req, res) => {
-    const { body: { name, surname, email, username, password } } = req
+  const {
+    body: {
+        title,
+        shortDescription,
+        fullDescription,
+        owner,
+        idPostTemplate,
+        namePostTemplate,
+        tag
+    }
+  } = req;
 
-    logic.register(name, surname, email, username, password)
-        .then(id => {
-            res.json(success({ id }))
-        })
-        .catch(err => {
-            res.json(fail(err.message))
-        })
-}
+  logic
+    .createPost(
+        title,
+        shortDescription,
+        fullDescription,
+        owner,
+        idPostTemplate,
+        namePostTemplate,
+        tag
+    )
+    .then(id => {
+      res.json(success({ id }));
+    })
+    .catch(err => {
+      res.json(fail(err.message));
+    });
+};

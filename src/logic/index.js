@@ -22,11 +22,35 @@ module.exports = {
             })
     },
 
-    list() {
+    list() {    // OK
         return Post.find({}).then(posts=>{
             return User.populate(posts, {path:'idUser' , select: 'user' })
         }) 
     },
+
+    createPost ( title,
+        shortDescription,
+        fullDescription,
+        owner,
+        idPostTemplate,
+        namePostTemplate,
+        tag){
+        return Post.insert(
+            {
+            "title":title,
+            "shortDescription":shortDescription,
+            "fullDescription":fullDescription,
+            "owner":ObjectId(owner),
+            "kudos":0,
+            "counterVisits":0,
+            "idPostTemplate":idPostTemplate,
+            "tag":[tag],
+            "comments":[]
+            }
+        )
+    },
+
+
     listById(owner) {
         return Post.find({owner}).populate({ path: 'owner', select: 'username' })
        // .then(posts=>{
@@ -47,10 +71,7 @@ module.exports = {
         })
     },
 
- 
 
-
-    
 
     update(id, name, surname, email, username, password, newUsername, newPassword) {
         return Promise.resolve()

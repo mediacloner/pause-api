@@ -25,16 +25,4 @@ router.post('/user', jsonBodyParser, createUser)
 router.delete('/comment/:id', deleteComment)
 
 
-
-
-
-
-/* router.post('/user', jsonBodyParser, create)
-
-router.put('/user/:id', jsonBodyParser, update)
-
-router.delete('/user/:id', jsonBodyParser, _delete)
-
-router.get('/user/:id', retrieve) */
-
 module.exports = router
