@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Pause API",
-		"_postman_id": "959be3cb-d149-4e20-aa22-4560967ef004",
+		"_postman_id": "ae6542e5-518a-4215-9374-e50bb532f8d5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -147,6 +147,37 @@
 			"response": []
 		},
 		{
+			"name": "DELETE comment",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"postId\": \"5aa795109b2cc10e9e2e7278\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/comment/5aa7a7d59b2cc10e9e2e7279",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comment",
+						"5aa7a7d59b2cc10e9e2e7279"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
 			"name": "LIST posts by iduser",
 			"request": {
 				"auth": {
@@ -177,7 +208,7 @@
 						"5aa78dd99b2cc10e9e2e7271"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		},
@@ -204,6 +235,36 @@
 					"path": [
 						"api",
 						"post"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n  \n  \t\"comment\": \"culture is good!!!\",\n  \t\t\"userId\": \"5aa7a7d59b2cc10e9e2e7279\"\n  }"
+				},
+				"url": {
+					"raw": "localhost:5000/api/comment/5aa795109b2cc10e9e2e7278",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comment",
+						"5aa795109b2cc10e9e2e7278"
 					]
 				},
 				"description": null
@@ -257,7 +318,7 @@
 						"listgroup"
 					]
 				},
-				"description": ""
+				"description": null
 			},
 			"response": []
 		}
