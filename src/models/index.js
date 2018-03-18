@@ -28,15 +28,18 @@ const Post = new mongoose.Schema({
     tag: String,
     createAt:{type: Date, default: Date.now},
     comments: [{
+        _id :  {type:mongoose.Schema.Types.ObjectId, default: function () { return new ObjectId()} },
         idUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         comment: String,
-        deleteUserId: String
+        deleteUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     }]
 
 })
 
+
+
+
 module.exports = {
     User: mongoose.model('User', User),
-
     Post: mongoose.model('Post', Post)
 }

@@ -62,6 +62,24 @@ module.exports = {
       });
   },
 
+  createComment(  
+    comment) {
+    return Promise.resolve()
+      .then(() => {
+        var friend = { firstName: 'Harry', lastName: 'Potter' };
+        person.friends.push(friend);
+        return person.save(done);
+          })
+          return post.save()
+
+      },
+      /* .then(resPost => {
+        if (!resPost) throw Error("Error");
+
+        return resPost;
+      }); */
+/*   }, */
+
 
   listById(owner) {
     return (
@@ -78,9 +96,12 @@ module.exports = {
   },
 
   listByGroup(arrayOfIds) {
-    return Post.find({ posts: { owner: { $in: arrayOfIds } } })
+    console.log(arrayOfIds)
+    return Post.find({ owner: { $in: arrayOfIds } } )   
     .then(post => {
+      console.log (post)
       if (!post) throw Error("posts does not exist");
+
       return post;
     });
   },
@@ -144,11 +165,26 @@ module.exports = {
       });
   },
 
+
+
+  deleteComment(id) {
+    return Promise.resolve()
+      .then(() => {
+        return User.findOne({ id });
+      })
+      .then(user => {
+        if (!user) throw Error("user does not exist");
+
+        if (user.username !== username || user.password !== password)
+          throw Error("username and/or password wrong");
+
+        return User.deleteOne({ id });
+      });
+  },
+
   remove(id, username, password) {
     return Promise.resolve()
       .then(() => {
-        validate({ id, username, password });
-
         return User.findOne({ id });
       })
       .then(user => {
