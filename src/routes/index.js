@@ -16,13 +16,13 @@ router.get('/search/word',listPostsBySearch)
 
 router.get('/post/:id', retrievePost)
 
-router.post('/comment', jsonBodyParser, createComment)
+router.post('/comment/:id', jsonBodyParser, createComment)
 
 router.post('/post', jsonBodyParser, createPost)
 
 router.post('/user', jsonBodyParser, createUser)
 
-router.delete('/comment/:id', deleteComment)
+router.delete('/comment/:id', jsonBodyParser, deleteComment)
 
 
 module.exports = router

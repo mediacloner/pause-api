@@ -62,23 +62,76 @@ module.exports = {
       });
   },
 
-  createComment(  
-    comment) {
-    return Promise.resolve()
-      .then(() => {
-        var friend = { firstName: 'Harry', lastName: 'Potter' };
-        person.friends.push(friend);
-        return person.save(done);
-          })
-          return post.save()
+/*      
+      createComment(  // working 
+        comment, userId, _id) {
+    
+          return Promise.resolve()
+          .then(()=> {
+            Post.findById(_id, function (err, post) {
+              // handle errors ..
+      
+              post.comments.push({ userId , comment });
+              return post.save();
+          })})    }  , */
 
-      },
-      /* .then(resPost => {
-        if (!resPost) throw Error("Error");
+/*           createComment(  // working 
+            comment, userId, _id) {
+        
+              return Promise.resolve()
+              .then(()=> {
+            Post.findOneAndUpdate({_id}, 
+              {
+                "$push": {
+                  comments:  {comment, userId}
+                }
+              }, {
+                new: true //to return updated document
+              })})}, */
 
-        return resPost;
-      }); */
-/*   }, */
+
+              createComment(  // working 
+                comment, userId, _id) {
+            
+                  return Promise.resolve()
+                  .then(()=> {
+                return Post.findOneAndUpdate({_id}, 
+                  {
+                    "$push": {
+                      comments:  {comment, userId}
+                    }
+                  }, {
+                    new: true //to return updated document
+                  })})},
+
+
+
+
+          deleteComment(  // working 
+            commentId, _id) {
+
+              console.log (commentId, _id)
+        
+              return Promise.resolve()
+              .then(()=> {
+                Post.findByIdAndUpdate(_id, {
+                  '$pull': {
+                      'comments':{ '_id': new ObjectId(commentId) }
+                  }
+              });
+              })} ,
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   listById(owner) {
@@ -167,20 +220,6 @@ module.exports = {
 
 
 
-  deleteComment(id) {
-    return Promise.resolve()
-      .then(() => {
-        return User.findOne({ id });
-      })
-      .then(user => {
-        if (!user) throw Error("user does not exist");
-
-        if (user.username !== username || user.password !== password)
-          throw Error("username and/or password wrong");
-
-        return User.deleteOne({ id });
-      });
-  },
 
   remove(id, username, password) {
     return Promise.resolve()

@@ -2,10 +2,10 @@ const { success, fail } = require('./api-utils')
 const logic = require('../../logic')
 
 module.exports = (req, res) => {
-    const { body: { username, password } } = req
+    const { body: { postId } } = req
     const { params: { id } } = req
 
-    logic.remove(id, username, password)
+    logic.deleteComment(id, postId)
         .then(() => {
             res.json(success())
         })
