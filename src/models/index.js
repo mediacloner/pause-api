@@ -9,7 +9,7 @@ const User = new mongoose.Schema({
     city: String,
     country: String,
     kudos: Number,
-    createAt: Date,
+    createAt: {type: Date, default: Date.now},
     about: String,
     followers: Array,
     following: Array,

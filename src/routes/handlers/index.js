@@ -20,8 +20,5 @@ module.exports = {
     deleteComment,
     retrievePost
 
-/*     create,
-    update,
-    delete: _delete,
-    retrieve */
+
 }

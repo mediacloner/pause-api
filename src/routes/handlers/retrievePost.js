@@ -4,9 +4,9 @@ const logic = require('../../logic')
 module.exports = (req, res) => {
     const { params: { id } } = req
 
-    logic.retrieve(id)
-        .then(user => {
-            res.json(success(user))
+    logic.retrievePost(id)
+        .then(post => {
+            res.json(success(post))
         })
         .catch(err => {
             res.json(fail(err.message))

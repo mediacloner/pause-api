@@ -35,6 +35,15 @@ module.exports = {
   },
 
 
+  retrievePost(id) { // id ok find ko
+
+    return Post.find({id}).then(post => {
+
+      return User.populate(post, { path: "idUser", select: "user" });
+    });
+  },
+
+
   createPost(
     title,
     shortDescription,
@@ -62,6 +71,27 @@ module.exports = {
       });
   },
 
+
+  createUser(
+    name, surname, email, username, password, city, country, about, timelineTitle) {
+    return Promise.resolve()
+      .then(() => {
+        const user = new User({
+          name, surname, email, username, password, city, country, about, timelineTitle
+
+        })
+
+        
+        return user.save()
+
+      })
+      .then(resUser => {
+        if (!resUser) throw Error("Error");
+
+        return resUser;
+      });
+  },
+
   createComment(  // working 
     comment, userId, _id) {
 
@@ -80,14 +110,7 @@ module.exports = {
       )
   },
 
-/*   deleteComment(_id) {
-    return Promise.resolve()
-      .then(() => {
-        Post.findByIdAndRemove({ _id })
-      }
-      )
-  },
- */
+
 
 deleteComment(_id) {
 
