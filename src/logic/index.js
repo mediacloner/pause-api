@@ -35,7 +35,7 @@ module.exports = {
   },
 
 
-  createPost(  
+  createPost(
     title,
     shortDescription,
     fullDescription,
@@ -44,15 +44,15 @@ module.exports = {
     tag) {
     return Promise.resolve()
       .then(() => {
-          const post = new Post({
-            title,
-            shortDescription,
-            fullDescription,
-            owner: ObjectId(owner),
-            idPostTemplate,
-            tag
-          })
-          return post.save()
+        const post = new Post({
+          title,
+          shortDescription,
+          fullDescription,
+          owner: ObjectId(owner),
+          idPostTemplate,
+          tag
+        })
+        return post.save()
 
       })
       .then(resPost => {
@@ -62,64 +62,57 @@ module.exports = {
       });
   },
 
-/*      
-      createComment(  // working 
-        comment, userId, _id) {
-    
-          return Promise.resolve()
-          .then(()=> {
-            Post.findById(_id, function (err, post) {
-              // handle errors ..
-      
-              post.comments.push({ userId , comment });
-              return post.save();
-          })})    }  , */
+  createComment(  // working 
+    comment, userId, _id) {
 
-/*           createComment(  // working 
-            comment, userId, _id) {
-        
-              return Promise.resolve()
-              .then(()=> {
-            Post.findOneAndUpdate({_id}, 
-              {
-                "$push": {
-                  comments:  {comment, userId}
-                }
-              }, {
-                new: true //to return updated document
-              })})}, */
+    return Promise.resolve()
+      .then(() => {
+        return Post.findOneAndUpdate({ _id },
+          {
+            "$push": {
+              comments: { comment, userId }
+            }
+          }, {
+            new: true //to return updated document
+          }
+        )
+      }
+      )
+  },
+
+/*   deleteComment(_id) {
+    return Promise.resolve()
+      .then(() => {
+        Post.findByIdAndRemove({ _id })
+      }
+      )
+  },
+ */
+
+deleteComment(_id) {
+
+  return Promise.resolve()
+    .then(() => {
+      return Post.findOneAndUpdate({'comments._id': _id}, {$pull: {comments: {_id}}},
+        function(err, doc) {
+          return doc        
+        });
+    })},
+
+getUserFollowing(idUser) {
+  validate(idUser)
+
+  return User.findOne({ _id: idUser }, { following: 1, _id: 0 })
+      .then(following => {
+          return User.find({ _id: { $in: following.following } })
+
+      })
+},
 
 
-              createComment(  // working 
-                comment, userId, _id) {
-            
-                  return Promise.resolve()
-                  .then(()=> {
-                return Post.findOneAndUpdate({_id}, 
-                  {
-                    "$push": {
-                      comments:  {comment, userId}
-                    }
-                  }, {
-                    new: true //to return updated document
-                  })})},
 
 
 
-
-          deleteComment(  // working 
-            commentId, _id) {
-
-              console.log (commentId, _id)
-        
-              return Promise.resolve()
-              .then(()=> {
-                Post.findByIdAndUpdate(_id, {
-                  '$pull': {
-                      'comments':{ '_id': new ObjectId(commentId) }
-                  }
-              });
-              })} ,
 
 
 
@@ -150,13 +143,13 @@ module.exports = {
 
   listByGroup(arrayOfIds) {
     console.log(arrayOfIds)
-    return Post.find({ owner: { $in: arrayOfIds } } )   
-    .then(post => {
-      console.log (post)
-      if (!post) throw Error("posts does not exist");
+    return Post.find({ owner: { $in: arrayOfIds } })
+      .then(post => {
+        console.log(post)
+        if (!post) throw Error("posts does not exist");
 
-      return post;
-    });
+        return post;
+      });
   },
 
   update(

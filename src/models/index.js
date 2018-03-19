@@ -28,10 +28,9 @@ const Post = new mongoose.Schema({
     tag: String,
     createAt:{type: Date, default: Date.now},
     comments: [{
-        _id :  {type:mongoose.Schema.Types.ObjectId, default: function () { return new ObjectId()} },
-        idUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+
+        userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
         comment: String,
-        deleteUserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     }]
 
 })
