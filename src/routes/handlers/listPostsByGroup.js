@@ -2,8 +2,8 @@ const { success, fail } = require('./api-utils')
 const logic = require('../../logic')
 
 module.exports = (req, res) => {
-    const { body: { idUsers } } = req
-    logic.listByGroup(idUsers)
+    const { params: { id } } = req
+    logic.listByGroup(id)
         .then(posts => {
             res.json(success(posts))
         })

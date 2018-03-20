@@ -134,22 +134,6 @@ getUserFollowing(idUser) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   listById(owner) {
     return (
       Post.find({ owner })
@@ -163,7 +147,7 @@ getUserFollowing(idUser) {
         })
     );
   },
-
+/* 
   listByGroup(arrayOfIds) {
     console.log(arrayOfIds)
     return Post.find({ owner: { $in: arrayOfIds } })
@@ -173,6 +157,51 @@ getUserFollowing(idUser) {
 
         return post;
       });
+  }, */
+
+
+/*   listByGroup(_id) {
+
+    return Promise.resolve()
+
+    .then(() => {var res = User.findOne({ _id }, { _id: 0, password: 0 })
+  
+  console.log(res)
+  })
+
+   /*  console.log(arrayOfIds)
+    return Post.find({ owner: { $in: arrayOfIds } })
+      .then(post => {
+        console.log(post)
+        if (!post) throw Error("posts does not exist");
+
+        return post;
+      }); */
+
+
+
+  listByGroup(_id) {
+    return Promise.resolve()
+      .then(() => {
+        validate({ _id });
+
+        //return User.findOne({ id }, 'id name surname email username') // WARN! it returns _id too!
+        return User.findOne({ _id }, { _id: 0, password: 0 });
+      })
+      .then(user => {
+        if (!user) throw Error("user does not exist");
+
+        return user.following;
+      })
+      .then (followingRes => {
+
+        return Post.find({ owner: { $in: followingRes } })})
+      .then(post => {
+
+        if (!post) throw Error("posts does not exist");
+
+        return post;
+      })
   },
 
   update(
@@ -231,24 +260,6 @@ getUserFollowing(idUser) {
         if (!user) throw Error("user does not exist");
 
         return user;
-      });
-  },
-
-
-
-
-  remove(id, username, password) {
-    return Promise.resolve()
-      .then(() => {
-        return User.findOne({ id });
-      })
-      .then(user => {
-        if (!user) throw Error("user does not exist");
-
-        if (user.username !== username || user.password !== password)
-          throw Error("username and/or password wrong");
-
-        return User.deleteOne({ id });
       });
   }
 };

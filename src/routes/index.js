@@ -10,7 +10,7 @@ router.get('/list', listPosts)
 
 router.get('/list/:id', listPostsByUser)
 
-router.post('/listgroup/',jsonBodyParser, listPostsByGroup)
+router.get('/listgroup/:id', listPostsByGroup)
 
 router.get('/search/word',listPostsBySearch)
 
