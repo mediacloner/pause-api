@@ -9,6 +9,7 @@ const deleteComment = require ('./deleteComment.js')
 const retrievePost = require ('./retrievePost.js')
 const retrieveUser = require ('./retrieveUser.js')
 const follow = require ('./follow.js')
+const search = require ('./search.js')
 
 
 module.exports = {
@@ -22,7 +23,8 @@ module.exports = {
     deleteComment,
     retrievePost,
     retrieveUser,
-    follow
+    follow,
+    search
 
 
 }

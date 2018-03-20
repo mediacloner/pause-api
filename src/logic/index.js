@@ -28,7 +28,6 @@ module.exports = {
   },
 
   list() {
-    // OK
     return Post.find({}).then(posts => {
       return User.populate(posts, { path: "owner", select: "username" });
     });
@@ -43,6 +42,20 @@ module.exports = {
     });
   },
 
+
+  search(searchVal){
+
+    return Promise.resolve()
+    .then(()=>{
+        var reg  = new RegExp(searchVal, "i")
+
+        return Post.find({$or: [{fullDescription: reg},{title: reg}]})
+
+    })
+    .then((result) => {
+      return result
+    })
+  },
 
   retrieveUser(id) {
 
