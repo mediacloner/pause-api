@@ -30,16 +30,16 @@ module.exports = {
   list() {
     // OK
     return Post.find({}).then(posts => {
-      return User.populate(posts, { path: "idUser", select: "user" });
+      return User.populate(posts, { path: "owner", select: "username" });
     });
   },
 
 
   retrievePost(id) { // id ok find ko
 
-    return Post.find({id}).then(post => {
+    return Post.find({_id:id}).then(post => {
 
-      return User.populate(post, { path: "idUser", select: "user" });
+      return User.populate(post, { path: "owner", select: "username" });
     });
   },
 
