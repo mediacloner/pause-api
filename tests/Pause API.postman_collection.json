@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Pause API",
-		"_postman_id": "ae6542e5-518a-4215-9374-e50bb532f8d5",
+		"_postman_id": "3c994821-f690-46a5-91ca-37193f3b6dfb",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -18,7 +18,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"n\",\n  \"surname\": \"s\",\n  \"email\": \"e\",\n  \"username\": \"u\",\n  \"password\": \"p\"\n}"
+					"raw": "{\n\"name\": \"aleelx\", \n\"surname\" : \"smith\", \n\"email\" : \"blks@gmail.com\", \n\"username\": \"sdfasdfa\", \n\"password\" : \"passw0rd\", \n\"city\" : \"London\",\n\"country\" : \"UK\",\n\"about\" : \"i'm so cool!\",\n\"nameTimeline\" : \"The time line\"\n}"
 				},
 				"url": {
 					"raw": "localhost:5000/api/user",
@@ -92,6 +92,31 @@
 			"response": []
 		},
 		{
+			"name": "RETRIEVE post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/api/post/5aad48cc397f4e4b0dc9a287",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"5aad48cc397f4e4b0dc9a287"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
 			"name": "LIST posts",
 			"request": {
 				"method": "GET",
@@ -158,10 +183,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"postId\": \"5aa795109b2cc10e9e2e7278\"\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/comment/5aa7a7d59b2cc10e9e2e7279",
+					"raw": "http://localhost:5000/api/comment/5aaf84a15044743d4e6c6e5f",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -170,7 +195,7 @@
 					"path": [
 						"api",
 						"comment",
-						"5aa7a7d59b2cc10e9e2e7279"
+						"5aaf84a15044743d4e6c6e5f"
 					]
 				},
 				"description": null
@@ -253,7 +278,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\n  \n  \t\"comment\": \"culture is good!!!\",\n  \t\t\"userId\": \"5aa7a7d59b2cc10e9e2e7279\"\n  }"
+					"raw": "  {\n  \t\"comment\": \"book is good!!!\",\n    \"userId\": \"5aa7a7d59b2cc10e9e2e7279\"\n  }"
 				},
 				"url": {
 					"raw": "localhost:5000/api/comment/5aa795109b2cc10e9e2e7278",
