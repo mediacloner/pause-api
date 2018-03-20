@@ -35,12 +35,18 @@ module.exports = {
   },
 
 
-  retrievePost(id) { // id ok find ko
+  retrievePost(id) { 
 
     return Post.find({_id:id}).then(post => {
 
       return User.populate(post, { path: "owner", select: "username" });
     });
+  },
+
+
+  retrieveUser(id) {
+
+    return User.find({_id:id})
   },
 
 
@@ -92,7 +98,7 @@ module.exports = {
       });
   },
 
-  createComment(  // working 
+  createComment(
     comment, userId, _id) {
 
     return Promise.resolve()
@@ -109,6 +115,28 @@ module.exports = {
       }
       )
   },
+
+
+  follow( 
+    userFollow, _id) {
+
+    return Promise.resolve()
+      .then(() => {
+
+        console.log(userFollow, _id)
+        return User.findOneAndUpdate({ _id },
+          {
+            "$push": {
+              following: userFollow 
+            }
+          }, {
+            new: true //to return updated document
+          }
+        )
+      }
+      )
+  },
+
 
 
 
@@ -147,38 +175,6 @@ getUserFollowing(idUser) {
         })
     );
   },
-/* 
-  listByGroup(arrayOfIds) {
-    console.log(arrayOfIds)
-    return Post.find({ owner: { $in: arrayOfIds } })
-      .then(post => {
-        console.log(post)
-        if (!post) throw Error("posts does not exist");
-
-        return post;
-      });
-  }, */
-
-
-/*   listByGroup(_id) {
-
-    return Promise.resolve()
-
-    .then(() => {var res = User.findOne({ _id }, { _id: 0, password: 0 })
-  
-  console.log(res)
-  })
-
-   /*  console.log(arrayOfIds)
-    return Post.find({ owner: { $in: arrayOfIds } })
-      .then(post => {
-        console.log(post)
-        if (!post) throw Error("posts does not exist");
-
-        return post;
-      }); */
-
-
 
   listByGroup(_id) {
     return Promise.resolve()

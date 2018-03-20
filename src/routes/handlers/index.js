@@ -7,6 +7,8 @@ const createPost = require ('./createPost.js')
 const createUser = require ('./createUser.js')
 const deleteComment = require ('./deleteComment.js')
 const retrievePost = require ('./retrievePost.js')
+const retrieveUser = require ('./retrieveUser.js')
+const follow = require ('./follow.js')
 
 
 module.exports = {
@@ -18,7 +20,9 @@ module.exports = {
     createPost,
     createUser,
     deleteComment,
-    retrievePost
+    retrievePost,
+    retrieveUser,
+    follow
 
 
 }
