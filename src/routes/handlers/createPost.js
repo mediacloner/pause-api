@@ -9,8 +9,9 @@ module.exports = (req, res) => {
         fullDescription,
         owner,
         idPostTemplate,
-        namePostTemplate,
-        tag
+        tag,
+        URLpath, 
+        time
     }
   } = req;
 
@@ -21,8 +22,9 @@ module.exports = (req, res) => {
         fullDescription,
         owner,
         idPostTemplate,
-        namePostTemplate,
-        tag
+        tag,
+        URLpath, 
+        time
     )
     .then(objResult => {
       res.json(success({ objResult }));

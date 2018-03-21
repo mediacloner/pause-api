@@ -28,8 +28,8 @@ module.exports = {
   },
 
   list() {
-    return Post.find({}).then(posts => {
-      return User.populate(posts, { path: "owner", select: "username" }).sort({createAt: 'desc'});
+    return Post.find({}).sort({createAt: 'desc'}).then(posts => {
+      return User.populate(posts, { path: "owner", select: "username" });
     });
   },
 
@@ -69,16 +69,21 @@ module.exports = {
     fullDescription,
     owner,
     idPostTemplate,
-    tag) {
+    tag,
+    URLpath, 
+    time) {
     return Promise.resolve()
       .then(() => {
+
         const post = new Post({
           title,
           shortDescription,
           fullDescription,
           owner: ObjectId(owner),
           idPostTemplate,
-          tag
+          tag,
+          URLpath,
+          time
         })
         return post.save()
 
@@ -212,64 +217,7 @@ getUserFollowing(idUser) {
 
         return post;
       })
-  },
-
-  update(
-    id,
-    name,
-    surname,
-    email,
-    username,
-    password,
-    newUsername,
-    newPassword
-  ) {
-    return Promise.resolve()
-      .then(() => {
-        validate({
-          id,
-          name,
-          surname,
-          email,
-          username,
-          password,
-          newUsername,
-          newPassword
-        });
-
-        return User.findOne({ username: newUsername });
-      })
-      .then(user => {
-        if (user) throw Error("username already exists");
-
-        return User.findOne({ id });
-      })
-      .then(user => {
-        if (!user) throw Error("user does not exists");
-
-        if (user.username !== username || user.password !== password)
-          throw Error("username and/or password wrong");
-
-        //return User.updateOne({ id }, { $set: { name, surname, email, username: newUsername, password: newPassword } }) // NOTE $set also works here, but it can be simplified as following statement
-        return User.updateOne(
-          { id },
-          { name, surname, email, username: newUsername, password: newPassword }
-        );
-      });
-  },
-
-  retrieve(id) {
-    return Promise.resolve()
-      .then(() => {
-        validate({ id });
-
-        //return User.findOne({ id }, 'id name surname email username') // WARN! it returns _id too!
-        return User.findOne({ id }, { _id: 0, password: 0 });
-      })
-      .then(user => {
-        if (!user) throw Error("user does not exist");
-
-        return user;
-      });
   }
+
+
 };

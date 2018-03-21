@@ -72,15 +72,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:5000/api/user/e36a42f6-154a-4d76-aeba-3cae1241222e",
+					"raw": "localhost:5000/api/search/WOW",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
 						"api",
-						"user",
-						"e36a42f6-154a-4d76-aeba-3cae1241222e"
+						"search",
+						"WOW"
 					]
 				},
 				"description": null
@@ -155,7 +155,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\n \t\"title\": \"Checkpoint new bla bla bla liner\",\n \t\"shortDescription\": \"Description in a few words\",\n \t\"fullDescription\": \"This is a explanation of all thins that you need in your live wow is too much or wathever you want\",\n \t\"owner\": \"5aa7a7d59b2cc10e9e2e7279\",\n \t\"kudos\": 10,\n \t\"counterVisits\": 110,\n \t\"idPostTemplate\": 1,\n \t\"tag\": \"culture\",\n \t\"comments\": []\n }"
+					"raw": "  {\n \t\"title\": \"Checkpoint new bla bla bla liner\",\n \t\"shortDescription\": \"Description in a few words\",\n \t\"fullDescription\": \"This is a explanation of all thins that you need in your live wow is too much or wathever you want\",\n \t\"owner\": \"5aa7a7d59b2cc10e9e2e7279\",\n \t\"kudos\": 10,\n \t\"counterVisits\": 110,\n \t\"idPostTemplate\": 1,\n \t\"tag\": \"culture\",\n \t\"URLpath\":\"https://stackoverflow.com/questions/43222540/get-selected-option-attribute-in-react\", \n \t\"time\" : \"22:22\",\n \t\"comments\": []\n }"
 				},
 				"url": {
 					"raw": "localhost:5000/api/post",

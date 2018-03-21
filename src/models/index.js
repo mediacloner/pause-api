@@ -24,9 +24,10 @@ const Post = new mongoose.Schema({
     kudos: {type: Number, default:0},
     counterVisits: {type: Number, default:0},
     idPostTemplate: String,
-    namePostTemplate: String,
     tag: String,
     createAt:{type: Date, default: Date.now},
+    URLpath: String , 
+    time: String,
     comments: [{
 
         userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
