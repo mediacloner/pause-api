@@ -29,7 +29,7 @@ module.exports = {
 
   list() {
     return Post.find({}).then(posts => {
-      return User.populate(posts, { path: "owner", select: "username" });
+      return User.populate(posts, { path: "owner", select: "username" }).sort({createAt: 'desc'});
     });
   },
 
@@ -177,7 +177,8 @@ getUserFollowing(idUser) {
 
   listById(owner) {
     return (
-      Post.find({ owner })
+      Post.find({ owner }).sort({createAt: 'desc'})
+
         .populate({ path: "owner", select: "username" })
         // .then(posts=>{
         //     return Post.find({ owner }).populate({ path: 'owner', select: 'username' })
@@ -204,7 +205,7 @@ getUserFollowing(idUser) {
       })
       .then (followingRes => {
 
-        return Post.find({ owner: { $in: followingRes } })})
+        return Post.find({ owner: { $in: followingRes } }).sort({createAt: 'desc'})})
       .then(post => {
 
         if (!post) throw Error("posts does not exist");
