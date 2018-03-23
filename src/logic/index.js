@@ -145,7 +145,7 @@ module.exports = {
           {
             "$inc": { kudos: 1 }
           }, {
-            new: true //to return updated document
+            new: true 
           }
         )
       }
