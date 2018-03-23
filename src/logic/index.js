@@ -135,6 +135,24 @@ module.exports = {
   },
 
 
+  addKudo( _id) {
+
+    return Promise.resolve()
+    .then(() => {
+      validate({ _id });
+
+      return Post.findOneAndUpdate({ _id },
+          {
+            "$inc": { kudos: 1 }
+          }, {
+            new: true //to return updated document
+          }
+        )
+      }
+      )
+  },
+
+
   follow( 
     userFollow, _id) {
 
@@ -200,7 +218,6 @@ getUserFollowing(idUser) {
       .then(() => {
         validate({ _id });
 
-        //return User.findOne({ id }, 'id name surname email username') // WARN! it returns _id too!
         return User.findOne({ _id }, { _id: 0, password: 0 });
       })
       .then(user => {

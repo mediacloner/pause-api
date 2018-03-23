@@ -113,6 +113,31 @@
 			"response": []
 		},
 		{
+			"name": "ADD kudos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/api/post/5aad48cc397f4e4b0dc9a287",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"post",
+						"5aad48cc397f4e4b0dc9a287"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
 			"name": "DELETE user",
 			"request": {
 				"method": "DELETE",

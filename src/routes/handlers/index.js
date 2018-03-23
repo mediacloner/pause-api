@@ -8,11 +8,13 @@ const createUser = require ('./createUser.js')
 const deleteComment = require ('./deleteComment.js')
 const retrievePost = require ('./retrievePost.js')
 const retrieveUser = require ('./retrieveUser.js')
+const addKudo = require ('./addKudo.js')
 const follow = require ('./follow.js')
 const search = require ('./search.js')
 
 
 module.exports = {
+    addKudo,
     listPosts,
     listPostsByUser,
     listPostsByGroup,
