@@ -38,7 +38,7 @@ module.exports = {
 
     return Post.find({_id:id}).then(post => {
 
-      return User.populate(post, { path: "owner", select: "username" });
+      return User.populate(post, { path: "owner", select: ["username", "timelineTitle", "about"] });
     });
   },
 
