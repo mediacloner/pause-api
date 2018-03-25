@@ -163,7 +163,7 @@ module.exports = {
         return User.findOneAndUpdate({ _id },
           {
             "$push": {
-              following: userFollow 
+              following: {userId: userFollow} 
             }
           }, {
             new: true //to return updated document
@@ -203,6 +203,20 @@ getUserFollowing(idUser) {
       Post.find({ owner }).sort({createAt: 'desc'})
 
         .populate({ path: "owner", select: "username" })
+        // .then(posts=>{
+        //     return Post.find({ owner }).populate({ path: 'owner', select: 'username' })
+        // })
+        .then(post => {
+          if (!post) throw Error("posts does not exist");
+          return post;
+        })
+    );
+  },  
+  
+  
+  listFollowingById( _id ) {
+    return (
+      User.find({ _id }).populate({ path: "owner", select: "username" })
         // .then(posts=>{
         //     return Post.find({ owner }).populate({ path: 'owner', select: 'username' })
         // })

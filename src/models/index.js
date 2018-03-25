@@ -12,7 +12,11 @@ const User = new mongoose.Schema({
     createAt: {type: Date, default: Date.now},
     about: String,
     followers: Array,
-    following: Array,
+    following: [{
+
+        userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    }],
+
     timelineTitle: String
 })
 

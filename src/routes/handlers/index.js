@@ -2,6 +2,7 @@ const listPosts = require('./listPosts')
 const listPostsByUser = require ('./listPostsByUser.js')
 const listPostsByGroup = require ('./listPostsByGroup.js')
 const listPostsBySearch = require ('./listPostsBySearch.js')
+const listFollowingByUser = require ('./listFollowingByUser.js')
 const createComment = require ('./createComment.js')
 const createPost = require ('./createPost.js')
 const createUser = require ('./createUser.js')
@@ -17,6 +18,7 @@ module.exports = {
     addKudo,
     listPosts,
     listPostsByUser,
+    listFollowingByUser,
     listPostsByGroup,
     listPostsBySearch,
     createComment,

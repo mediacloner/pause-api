@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
-const { addKudo, retrieveUser, follow, listPosts, listPostsByUser, listPostsByGroup, createComment, createPost, createUser, deleteComment,search, retrievePost } = require('./handlers')
+const {listFollowingByUser, addKudo, retrieveUser, follow, listPosts, listPostsByUser, listPostsByGroup, createComment, createPost, createUser, deleteComment,search, retrievePost } = require('./handlers')
 
 const router = Router()
 
@@ -9,6 +9,9 @@ const jsonBodyParser = bodyParser.json()
 router.get('/list', listPosts)
 
 router.get('/list/:id', listPostsByUser)
+
+
+router.get('/following/:id', listFollowingByUser)
 
 router.get('/listgroup/:id', listPostsByGroup)
 
