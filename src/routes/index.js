@@ -10,7 +10,6 @@ router.get('/list', listPosts)
 
 router.get('/list/:id', listPostsByUser)
 
-
 router.get('/following/:id', listFollowingByUser)
 
 router.get('/listgroup/:id', listPostsByGroup)

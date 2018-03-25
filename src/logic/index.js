@@ -215,14 +215,18 @@ getUserFollowing(idUser) {
   
   
   listFollowingById( _id ) {
+
+    console.log(_id)
+    
     return (
-      User.find({ _id }).populate({ path: "owner", select: "username" })
-        // .then(posts=>{
-        //     return Post.find({ owner }).populate({ path: 'owner', select: 'username' })
-        // })
-        .then(post => {
+     
+      User.findOne({ _id }).populate({ path: "following", select: "userId" })
+
+        .then(following => {
+          console.log(following)
+          
           if (!post) throw Error("posts does not exist");
-          return post;
+          return following;
         })
     );
   },
