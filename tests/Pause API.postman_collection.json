@@ -1,7 +1,7 @@
 {
 	"info": {
-		"name": "Pause API",
-		"_postman_id": "41096d5f-3ac5-4014-a168-4f7a65a7cf8d",
+		"name": "Pause API copy",
+		"_postman_id": "beb93f95-1b9b-453c-8b07-7c58b2690da3",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -97,7 +97,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:5000/api/post/5aad48cc397f4e4b0dc9a287",
+					"raw": "localhost:5000/api/post/5aa795109b2cc10e9e2e7278",
 					"host": [
 						"localhost"
 					],
@@ -105,7 +105,7 @@
 					"path": [
 						"api",
 						"post",
-						"5aad48cc397f4e4b0dc9a287"
+						"5aa795109b2cc10e9e2e7278"
 					]
 				},
 				"description": null
@@ -233,6 +233,41 @@
 			"response": []
 		},
 		{
+			"name": "LIST following by iduser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1lc2JlIiwiaWF0IjoxNTIwNTE1MzAxLCJleHAiOjE1MjA1MTg5MDF9.RzQNcC2oBEDL5g9OadlPtBYF9r56nfcmk1sh9P9oKl0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/api/following/5aa78dd99b2cc10e9e2e7271",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"following",
+						"5aa78dd99b2cc10e9e2e7271"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
 			"name": "LIST posts by Group",
 			"event": [
 				{
@@ -269,7 +304,7 @@
 					"raw": "{\n\t\"idUsers\": [\"5aa7a7d59b2cc10e9e2e7279\"]\n}"
 				},
 				"url": {
-					"raw": "localhost:5000/api/listgroup/5aad486a397f4e4b0dc9a285",
+					"raw": "localhost:5000/api/listgroup/5aafaa281ca9687a2d6bb1b4",
 					"host": [
 						"localhost"
 					],
@@ -277,7 +312,7 @@
 					"path": [
 						"api",
 						"listgroup",
-						"5aad486a397f4e4b0dc9a285"
+						"5aafaa281ca9687a2d6bb1b4"
 					]
 				},
 				"description": null
