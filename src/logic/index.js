@@ -240,8 +240,7 @@ getUserFollowing(idUser) {
       })
       .then(user => {
         if (!user) throw Error("user does not exist");
-
-        return user.following;
+        return user.following.map((obj) => {return obj.userId})
       })
       .then (followingRes => {
 
@@ -253,6 +252,5 @@ getUserFollowing(idUser) {
         return post;
       })
   }
-
 
 };
