@@ -34,6 +34,33 @@ module.exports = {
   },
 
 
+  listFollowingById( _id ) {
+    
+    return (
+     
+/*       User.findOne({ _id }).select('following')
+
+        .then (followingRes => {
+
+            return  User.populate(followingRes, { path: "idUser"}).then(console.log);
+          })
+
+ */
+
+          User.findOne({_id }, {username:1})
+            .populate('userId')
+            .populate('following.userId', {username:1, timelineTitle:1, city:1 } )
+            
+
+
+
+
+
+
+    )
+  },
+
+
   retrievePost(id) { 
 
     return Post.find({_id:id}).then(post => {
@@ -214,22 +241,7 @@ getUserFollowing(idUser) {
   },  
   
   
-  listFollowingById( _id ) {
 
-    console.log(_id)
-    
-    return (
-     
-      User.findOne({ _id }).populate({ path: "following", select: "userId" })
-
-        .then(following => {
-          console.log(following)
-          
-          if (!post) throw Error("posts does not exist");
-          return following;
-        })
-    );
-  },
 
   listByGroup(_id) {
     return Promise.resolve()
