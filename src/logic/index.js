@@ -38,25 +38,9 @@ module.exports = {
     
     return (
      
-/*       User.findOne({ _id }).select('following')
-
-        .then (followingRes => {
-
-            return  User.populate(followingRes, { path: "idUser"}).then(console.log);
-          })
-
- */
-
           User.findOne({_id }, {username:1})
             .populate('userId')
             .populate('following.userId', {username:1, timelineTitle:1, city:1 } )
-            
-
-
-
-
-
-
     )
   },
 
