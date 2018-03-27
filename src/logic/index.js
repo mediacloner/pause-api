@@ -208,6 +208,19 @@ getUserFollowing(idUser) {
 },
 
 
+verify(username, password) {
+  return Promise.resolve()
+      .then(() => {
+          validate({ username, password })
+
+          return User.findOne({ username, password })
+      })
+      .then(user => {
+          if (!user) throw Error('username and/or password wrong')
+
+          return user.id
+      })
+},
 
   listById(owner) {
     return (

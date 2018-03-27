@@ -12,6 +12,7 @@ const retrieveUser = require ('./retrieveUser.js')
 const addKudo = require ('./addKudo.js')
 const follow = require ('./follow.js')
 const search = require ('./search.js')
+const login = require('./login')
 
 
 module.exports = {
@@ -28,7 +29,8 @@ module.exports = {
     retrievePost,
     retrieveUser,
     follow,
-    search
+    search,
+    login
 
 
 }

@@ -1,10 +1,20 @@
 const { Router } = require('express')
 const bodyParser = require('body-parser')
-const {listFollowingByUser, addKudo, retrieveUser, follow, listPosts, listPostsByUser, listPostsByGroup, createComment, createPost, createUser, deleteComment,search, retrievePost } = require('./handlers')
+const {login, listFollowingByUser, addKudo, retrieveUser, follow, listPosts, listPostsByUser, listPostsByGroup, createComment, createPost, createUser, deleteComment,search, retrievePost } = require('./handlers')
+const jwtValidator = require('../routes/handlers/jwtValidator')
+
+
 
 const router = Router()
 
 const jsonBodyParser = bodyParser.json()
+router.post('/login', jsonBodyParser, login) 
+
+//TODO: 
+
+//router.delete('/user/:id', [jwtValidator, jsonBodyParser], _delete)
+//router.get('/user/:id', jwtValidator, retrieve)
+
 
 router.get('/list', listPosts)
 
