@@ -36,12 +36,10 @@ module.exports = {
 
   listFollowingById( _id ) {
     
-    return (
-     
-          User.findOne({_id }, {username:1})
-            .populate('userId')
+    return User.findOne({_id }, {username:1, following:1})
+           .populate('userId')
             .populate('following.userId', {username:1, timelineTitle:1, city:1 } )
-    )
+     
   },
 
 
@@ -175,7 +173,6 @@ module.exports = {
               const exist = following.some(fol=>{
                 return fol.userId==userFollow
               })
-              console.log(exist)
               if(exist){
                 following = following.filter(fol=>{
                   console.log (fol.userId+'!=' + userFollow)
