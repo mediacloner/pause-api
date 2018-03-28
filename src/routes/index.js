@@ -31,9 +31,7 @@ router.get('/user/:id', retrieveUser)
 
 router.put('/kudos/:id', addKudo)
 
-router.post('/comment/:id', jsonBodyParser, createComment)
-
-
+router.post('/comment', [jwtValidator, jsonBodyParser], createComment)
 
 router.post('/user', jsonBodyParser, createUser)
 

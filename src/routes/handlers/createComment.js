@@ -4,15 +4,15 @@ const logic = require('../../logic')
 module.exports = (req, res) => {
     const {
       body: {
-         comment, userId
+         id ,comment
       }
     } = req;
 
-    const { params: { id } } = req
+    const {idUser} = req.tokencito
   
     logic
       .createComment(
-         comment, userId, id
+         comment, idUser, id
       )
       .then(objResult => {
         console.log(objResult)
