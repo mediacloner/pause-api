@@ -49,7 +49,7 @@ module.exports = {
 
     return Post.find({_id:id}).then(post => {
 
-      return User.populate(post, { path: "owner", select: ["username", "timelineTitle", "about"] });
+      return User.populate(post, { path: "owner", select: ["username", "timelineTitle", "about", "following"] });
     }).then(comment => {return User.populate(comment, { path: "comments.userId", select: ["username"] })});
   },
 
