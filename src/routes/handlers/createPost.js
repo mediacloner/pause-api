@@ -15,12 +15,14 @@ module.exports = (req, res) => {
     }
   } = req;
 
+  const {idUser} = req.tokencito
+
   logic
     .createPost(
         title,
         shortDescription,
         fullDescription,
-        owner,
+        idUser,
         idPostTemplate,
         tag,
         URLpath, 

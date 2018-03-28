@@ -13,6 +13,8 @@ const addKudo = require ('./addKudo.js')
 const follow = require ('./follow.js')
 const search = require ('./search.js')
 const login = require('./login')
+const listPostsSpecificUser = require('./listPostsSpecificUser')
+
 
 
 module.exports = {
@@ -30,7 +32,8 @@ module.exports = {
     retrieveUser,
     follow,
     search,
-    login
+    login,
+    listPostsSpecificUser
 
 
 }

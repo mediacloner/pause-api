@@ -3,9 +3,9 @@ const logic = require('../../logic')
 
 
 module.exports = (req, res) => {
-    const {idUser} = req.tokencito
+    const { params: { id } } = req
 
-    logic.listById(idUser)
+    logic.listById(id)
         .then(posts => {
             res.json(success(posts))
         })

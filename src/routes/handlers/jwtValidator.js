@@ -9,9 +9,7 @@ function jwtValidator(req, res, next) {
     try {
         const token = auth.split(' ')[1]
 
-        jwt.verify(token, secret)
-
-        req.token = jwt.verify(token, secret)
+        req.tokencito = jwt.verify(token, secret)
 
         next()
     } catch(err) {

@@ -10,8 +10,8 @@ module.exports = (req, res) => {
    const { body: { username, password } } = req
 
    logic.verify(username, password)
-       .then(({ id }) => {
-           const token = jwt.sign({ id }, secret, { expiresIn })
+       .then((id) => {
+           const token = jwt.sign({ idUser: id }, secret, { expiresIn })
 
            res.json(success({ token }))
        })
