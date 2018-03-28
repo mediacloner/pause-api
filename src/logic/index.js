@@ -169,9 +169,26 @@ module.exports = {
 
     return Promise.resolve()
       .then(() => {
+          return User.findOne({_id})
+            .then(user=>{
+              let following = user.following
+              const exist = following.some(fol=>{
+                return fol.userId==userFollow
+              })
+              console.log(exist)
+              if(exist){
+                following = following.filter(fol=>{
+                  console.log (fol.userId+'!=' + userFollow)
+                  return fol.userId != userFollow
+                })
+              }else{
+                following.push({userId: userFollow})
+              }
+              user.following = following
+              return user.save()// User.update({_id},{following})
+            })
 
-        console.log(userFollow, _id)
-        return User.findOneAndUpdate({ _id },
+        /* return User.findOneAndUpdate({ _id },
           {
             "$push": {
               following: {userId: userFollow} 
@@ -179,7 +196,7 @@ module.exports = {
           }, {
             new: true //to return updated document
           }
-        )
+        ) */
       }
       )
   },
