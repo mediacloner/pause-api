@@ -14,7 +14,11 @@
     Pause is a calmness, concise and interesting way to share your
     lighting moments on books, photos, videos or podcasts. 
 
-More info on ![Pause](https://github.com/mediacloner/pause)
+More info on [Pause](https://github.com/mediacloner/pause)
+
+## URL
+
+[pause.click ](https://pause.click)
 
 
 
