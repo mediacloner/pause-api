@@ -21,7 +21,7 @@ More info on ![Pause](https://github.com/mediacloner/pause)
 ## Data Model
 
 
-![Data Model](https://github.com/mediacloner/pause/blob/develop/DocSrc/pausev3.png)
+![Data Model](https://github.com/mediacloner/pause/blob/master/doc/pausev3.png)
 
 
 # Kanban
@@ -30,13 +30,13 @@ More info on ![Pause](https://github.com/mediacloner/pause)
 
 
 ## Trello
-![Trello](https://github.com/mediacloner/pause/blob/develop/DocSrc/trello.png)
+![Trello](https://github.com/mediacloner/pause/blob/master/doc/trello.png)
 
 ## Gantt
 
-![Gantt](https://github.com/mediacloner/pause/blob/develop/DocSrc/gantt.png)
+![Gantt](https://github.com/mediacloner/pause/blob/master/doc/gantt.png)
 
 
 ## Calendar
 
-![Calendar](https://github.com/mediacloner/pause/blob/develop/DocSrc/calendar.png)
+![Calendar](https://github.com/mediacloner/pause/blob/master/doc/calendar.png)
