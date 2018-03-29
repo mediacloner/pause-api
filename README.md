@@ -21,7 +21,7 @@ More info on ![Pause](https://github.com/mediacloner/pause)
 ## Data Model
 
 
-![Data Model](https://github.com/mediacloner/pause/blob/develop/DocSrc/dataModelv2.png)
+![Data Model](https://github.com/mediacloner/pause/blob/develop/DocSrc/pausev3.png)
 
 
 # Kanban
